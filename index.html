@@ -684,6 +684,7 @@
       background: #2a2a2a;
       position: relative;
       overflow: hidden;
+      z-index: 400;
     }
     
     .services-offered-section::before {
@@ -721,7 +722,7 @@
       background: #ffffff;
       color: #2a2a2a;
       margin-bottom: 4rem;
-      margin-top: 0;
+      margin-top: -40px;
       letter-spacing: 10px;
       text-transform: uppercase;
       position: relative;
@@ -738,6 +739,7 @@
       border-left: none;
       border-right: none;
       box-sizing: border-box;
+      z-index: 450;
     }
     
      .services-offered-grid {
@@ -1343,6 +1345,10 @@
       .card-badge {
         display: none;
       }
+      
+      .slider-dots {
+        display: none !important;
+      }
     }
     
     @media (max-width: 600px) {
@@ -1413,6 +1419,7 @@
         font-size: 2rem;
         padding: 20px 0;
         letter-spacing: 2px;
+        margin-bottom: 2rem;
       }
       
       .service-offered-card {
@@ -1435,12 +1442,18 @@
       }
       
       .services-section {
-        padding: 0 0 60px 0;
+        padding: 0 0 35px 0;
         margin-top: -60px;
       }
       
       .services-offered-section {
-        padding: 40px 0 60px 0;
+        padding: 15px 0 60px 0;
+        margin-top: -25px;
+      }
+      
+      .services-section-title {
+        margin-top: 0;
+        padding-top: 20px;
       }
     }
     
@@ -1559,10 +1572,10 @@
       <div class="logo-placeholder">
         <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-header-logo">
       </div>
-      <a href="#home">HOME</a>
-      <a href="#services">SERVICES</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
+      <a href="#home">SĀKUMS</a>
+      <a href="#services">PAKALPOJUMI</a>
+      <a href="#about">PAR MUMS</a>
+      <a href="#contact">KONTAKTI</a>
     </nav>
   </div>
 
@@ -1576,10 +1589,10 @@
     <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-mobile-logo">
     <button class="hero-mobile-menu-btn" id="hero-mobile-menu-btn" aria-label="Open menu">☰</button>
     <div class="hero-mobile-dropdown" id="hero-mobile-dropdown">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#home">Sākums</a>
+      <a href="#services">Pakalpojumi</a>
+      <a href="#about">Par mums</a>
+      <a href="#contact">Kontakti</a>
     </div>
     
     <!-- Hero Content -->
@@ -1589,8 +1602,8 @@
       </div>
       <div class="hero-subheadline">Mašīnu restaurācijas un pārkrāsošanas pakalpojumi</div>
       <div class="hero-buttons">
-        <a href="#services" class="hero-btn primary">REALIZĒTIE AUTO PROJEKTI</a>
-        <a href="#contact" class="hero-btn secondary">Get Quote</a>
+        <a href="#services" class="hero-btn primary">PAKALPOJUMI</a>
+        <a href="#contact" class="hero-btn secondary">KONTAKTI</a>
       </div>
     </div>
   </header>
@@ -1677,7 +1690,7 @@
               <div class="slider-wrapper">
                 <img src="./sup3.jpg" alt="Toyota Supra Image sup3" class="slide active">
                 <img src="./sup1.jpg" alt="Toyota Supra Image sup1" class="slide">
-                <img src="./sup2.jpg" alt="Toyota Supra Image sup2" class="slide">
+                <img src="./sup.jpg" alt="Toyota Supra Image sup" class="slide">
               </div>
               <div class="slider-dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1705,9 +1718,9 @@
           <div class="service-image">
             <div class="image-slider camaro-slider">
               <div class="slider-wrapper">
-                <img src="./z1.jpg" alt="Toyota Supra Image z1" class="slide active">
-                <img src="./z2.jpg" alt="Toyota Supra Image z2" class="slide">
-                <img src="./sup.jpg" alt="Toyota Supra Image sup" class="slide">
+                <img src="./z1.jpg" alt="Nissan Skyline Image z1" class="slide active">
+                <img src="./z2.jpg" alt="Nissan Skyline Image z2" class="slide">
+                <img src="./z3.jpg" alt="Nissan Skyline Image z3" class="slide">
               </div>
               <div class="slider-dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1718,12 +1731,12 @@
           </div>
           <div class="service-content">
             <div class="project-tags">
-              <span class="project-tag">Pilnīga restaurācija</span>
-              <span class="project-tag">Dzinējs</span>
-              <span class="project-tag">Virsbūve</span>
+              <span class="project-tag">Krāsošana</span>
+              <span class="project-tag">Virsbūves remonts</span>
+              <span class="project-tag">Gruntēšana</span>
             </div>
-            <h3>TOYOTA SUPRA</h3>
-            <p>Pilnīga restaurācija visā spektrā - no dzinēja kapitālā remonta līdz virsbūves atjaunošanai. Restaurācijas process ietver visu sistēmu pārbaudi, defektāciju, nepieciešamo komponentu nomaiņu un profesionālu krāsošanu. Nodrošinām, ka jūsu auto iegūst oriģinālu izskatu un atkal darbojas kā jauns.</p>
+            <h3>NISSAN SKYLINE</h3>
+            <p>Pilnīga virsbūves pārkrāsošana un atjaunošana pilnā spektrā - veicam visu virsbūves sagatavošanu, noņemam veco krāsu, izlīdzinam visas virsmas un novēršam defektus. Pēc tam seko profesionāla gruntēšana un augstas kvalitātes krāsošana ar mūsdienīgākajiem materiāliem, nodrošinot ideālu rezultātu visā virsbūvē.</p>
             <a href="#contact" class="service-btn">Skatīt detalizēti →</a>
           </div>
         </div>
@@ -1802,9 +1815,9 @@
       <div class="footer-section">
         <h3>Kontaktinformācija</h3>
         <ul>
-          <li><a href="mailto:info@autorestore.com">info@autorestore.com</a></li>
-          <li><a href="tel:+1234567890">(123) 456-7890</a></li>
-          <li>123 Restoration Lane, Auto City, AC 12345</li>
+          <li>Kungu iela 87a, Liepāja, LV-3401</li>
+          <li><a href="mailto:sveilisaivis@gmail.com">sveilisaivis@gmail.com</a></li>
+          <li><a href="tel:+37124987686">+371 24 987 686</a></li>
         </ul>
       </div>
     </div>
@@ -1957,13 +1970,19 @@
         observer.observe(card);
       });
       
-      // Image slider for Nissan R34 Skyline card
-      const mustangSlider = document.querySelector('.mustang-slider');
-      if (mustangSlider) {
-        const slides = mustangSlider.querySelectorAll('.slide');
-        const dots = mustangSlider.querySelectorAll('.dot');
+      // Helper function to initialize slider when visible
+      function initSliderOnVisible(sliderSelector) {
+        const slider = document.querySelector(sliderSelector);
+        if (!slider) return;
+        
+        const card = slider.closest('.service-card');
+        if (!card) return;
+        
+        const slides = slider.querySelectorAll('.slide');
+        const dots = slider.querySelectorAll('.dot');
         let currentSlide = 0;
         let slideInterval;
+        let hasStarted = false;
         
         function showSlide(index) {
           slides.forEach((slide, i) => {
@@ -1987,19 +2006,31 @@
         }
         
         function startSlider() {
-          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+          if (slideInterval) clearInterval(slideInterval);
+          slideInterval = setInterval(nextSlide, 3000);
         }
         
         function stopSlider() {
-          clearInterval(slideInterval);
+          if (slideInterval) clearInterval(slideInterval);
         }
         
-        // Start auto-sliding
-        startSlider();
+        // Initialize slider when card comes into view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !hasStarted) {
+              hasStarted = true;
+              startSlider();
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        observer.observe(card);
         
         // Pause on hover
-        mustangSlider.addEventListener('mouseenter', stopSlider);
-        mustangSlider.addEventListener('mouseleave', startSlider);
+        slider.addEventListener('mouseenter', stopSlider);
+        slider.addEventListener('mouseleave', () => {
+          if (hasStarted) startSlider();
+        });
         
         // Dot click navigation
         dots.forEach((dot, index) => {
@@ -2007,175 +2038,21 @@
             currentSlide = index;
             showSlide(currentSlide);
             stopSlider();
-            startSlider();
+            if (hasStarted) {
+              setTimeout(() => startSlider(), 500);
+            }
           });
         });
       }
       
-      // Image slider for BMW E30 card
-      const corvetteSlider = document.querySelector('.corvette-slider');
-      if (corvetteSlider) {
-        const slides = corvetteSlider.querySelectorAll('.slide');
-        const dots = corvetteSlider.querySelectorAll('.dot');
-        let currentSlide = 0;
-        let slideInterval;
-        
-        function showSlide(index) {
-          slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-              slide.classList.add('active');
-            }
-          });
-          
-          dots.forEach((dot, i) => {
-            dot.classList.remove('active');
-            if (i === index) {
-              dot.classList.add('active');
-            }
-          });
-        }
-        
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-        
-        function startSlider() {
-          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        }
-        
-        function stopSlider() {
-          clearInterval(slideInterval);
-        }
-        
-        // Start auto-sliding
-        startSlider();
-        
-        // Pause on hover
-        corvetteSlider.addEventListener('mouseenter', stopSlider);
-        corvetteSlider.addEventListener('mouseleave', startSlider);
-        
-        // Dot click navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
-            stopSlider();
-            startSlider();
-          });
-        });
-      }
+      // Initialize all sliders when visible
+      initSliderOnVisible('.mustang-slider');
       
-      // Image slider for Toyota Supra card
-      const chevelleSlider = document.querySelector('.chevelle-slider');
-      if (chevelleSlider) {
-        const slides = chevelleSlider.querySelectorAll('.slide');
-        const dots = chevelleSlider.querySelectorAll('.dot');
-        let currentSlide = 0;
-        let slideInterval;
-        
-        function showSlide(index) {
-          slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-              slide.classList.add('active');
-            }
-          });
-          
-          dots.forEach((dot, i) => {
-            dot.classList.remove('active');
-            if (i === index) {
-              dot.classList.add('active');
-            }
-          });
-        }
-        
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-        
-        function startSlider() {
-          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        }
-        
-        function stopSlider() {
-          clearInterval(slideInterval);
-        }
-        
-        // Start auto-sliding
-        startSlider();
-        
-        // Pause on hover
-        chevelleSlider.addEventListener('mouseenter', stopSlider);
-        chevelleSlider.addEventListener('mouseleave', startSlider);
-        
-        // Dot click navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
-            stopSlider();
-            startSlider();
-          });
-        });
-      }
+      initSliderOnVisible('.corvette-slider');
       
-      // Image slider for Camaro/Supra card with z1, z2, z3 images
-      const camaroSlider = document.querySelector('.camaro-slider');
-      if (camaroSlider) {
-        const slides = camaroSlider.querySelectorAll('.slide');
-        const dots = camaroSlider.querySelectorAll('.dot');
-        let currentSlide = 0;
-        let slideInterval;
-        
-        function showSlide(index) {
-          slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-              slide.classList.add('active');
-            }
-          });
-          
-          dots.forEach((dot, i) => {
-            dot.classList.remove('active');
-            if (i === index) {
-              dot.classList.add('active');
-            }
-          });
-        }
-        
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-        
-        function startSlider() {
-          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        }
-        
-        function stopSlider() {
-          clearInterval(slideInterval);
-        }
-        
-        // Start auto-sliding
-        startSlider();
-        
-        // Pause on hover
-        camaroSlider.addEventListener('mouseenter', stopSlider);
-        camaroSlider.addEventListener('mouseleave', startSlider);
-        
-        // Dot click navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
-            stopSlider();
-            startSlider();
-          });
-        });
-      }
+      initSliderOnVisible('.chevelle-slider');
+      
+      initSliderOnVisible('.camaro-slider');
       
       // Scroll to Top Button
       const scrollTopBtn = document.getElementById('scrollTop');
@@ -2231,6 +2108,14 @@
   </button>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
