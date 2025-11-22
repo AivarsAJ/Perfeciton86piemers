@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Perfection 86</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lightning-red: #FF0000;
+      --racing-red: #CC0000;
+      --accent: #FF0000;
+      --racing-yellow: #FFFFFF;
+      --racing-white: #FFFFFF;
+      --racing-black: #000000;
+      --racing-gray: #1a1a1a;
+      --white: #FFFFFF;
+      --overlay-dark: rgba(0, 0, 0, 0.5);
+      --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.7) 100%);
+      --headline-size: 3.5rem;
+      --subheadline-size: 1.35rem;
+      --button-radius: 999px;
+      --button-padding: 0.9em 2.2em;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #fff;
+    }
+    
+    
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Hero Header Overlay - Transparent at top */
+    .hero-header-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 300;
+      background: rgba(26,26,26,0);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      height: 72px;
+      pointer-events: auto;
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .hero-header-overlay.visible {
+      background: #1a1a1a;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+    
+    .hero-header-overlay .hero-header-logo {
+      margin-left: 16px;
+      height: 40px;
+      width: auto;
+      max-width: 150px;
+      display: block;
+      transition: height 0.3s, max-width 0.3s;
+      position: relative;
+      filter: brightness(0) invert(1);
+    }
+    
+    .hero-header-overlay.visible .hero-header-logo {
+      filter: brightness(0) invert(1);
+    }
+    
+    .hero-header-overlay .hero-header-logo-nav {
+      display: none;
+    }
+    
+    .hero-header-nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin-right: 16px;
+    }
+    
+    .hero-header-nav a {
+      color: #fff;
+      font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.3em 0.8em;
+      border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.32);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .hero-header-nav a:hover, .hero-header-nav a:focus {
+      background: none;
+      color: #fff;
+      outline: none;
+    }
+    
+    .hero-header-overlay.visible .hero-header-nav a {
+      color: #ffffff;
+      text-shadow: none;
+    }
+    
+    .hero-header-overlay.visible .hero-header-nav a:hover {
+      color: var(--lightning-red);
+      background: none;
+    }
+    
+    .logo-placeholder {
+      width: 150px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.32);
+    }
+    
+    .logo-placeholder img {
+      width: auto;
+      height: 100%;
+      max-width: 150px;
+      max-height: 40px;
+      display: block;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s;
+    }
+    
+    .hero-header-overlay.visible .logo-placeholder img {
+      filter: brightness(0) invert(1);
+    }
+    
+    .hero-header-overlay.visible .logo-placeholder {
+      color: #ffffff;
+      text-shadow: none;
+    }
+    
+    /* Mobile Logo and Menu Button */
+    .hero-mobile-logo {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 10;
+      height: 38px;
+      width: auto;
+      max-width: 120px;
+      display: block;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+    }
+    
+    .hero-mobile-menu-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 10;
+      height: 38px;
+      width: 38px;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .hero-mobile-menu-btn:active,
+    .hero-mobile-menu-btn.open {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    
+    .hero-mobile-dropdown {
+      display: none;
+      position: absolute;
+      top: 62px;
+      right: 18px;
+      z-index: 20;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(34,34,34,0.13);
+      padding: 0.7rem 0.5rem;
+      min-width: 140px;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .hero-mobile-dropdown.open {
+      display: flex;
+    }
+    
+    .hero-mobile-dropdown a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.4em 0.7em;
+      border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+      display: block;
+      background: transparent;
+    }
+    
+    .hero-mobile-dropdown a:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--overlay-gradient);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: -150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+    }
+    
+    .hero-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-headline {
+      font-family: 'Merriweather', 'Georgia', serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      font-size: var(--headline-size);
+      text-align: center;
+      text-shadow: 0 4px 32px rgba(34,34,34,0.32), 0 0 0.5em var(--accent);
+      margin-bottom: 1.1rem;
+      line-height: 1.08;
+    }
+    
+    .hero-headline img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 4px 32px rgba(34,34,34,0.32)) drop-shadow(0 0 0.5em var(--accent));
+      max-height: 480px;
+      width: auto;
+    }
+    
+    .hero-subheadline {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--white);
+      font-size: var(--subheadline-size);
+      font-weight: 400;
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 2.2rem;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 12px rgba(34,34,34,0.22);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .hero-btn {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: var(--button-radius);
+      padding: var(--button-padding);
+      border: 2px solid var(--accent);
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+      box-shadow: 0 2px 16px rgba(34,34,34,0.10);
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero-btn.primary {
+      background: var(--lightning-red);
+      color: #fff;
+      border: 2px solid var(--lightning-red);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-btn.primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .hero-btn.primary:hover::before {
+      left: 100%;
+    }
+    
+    .hero-btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid var(--racing-white);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    
+    .hero-btn.primary:hover, .hero-btn.primary:focus {
+      background: var(--racing-red);
+      color: #fff;
+      border: 2px solid var(--racing-white);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+    
+    .hero-btn.secondary:hover, .hero-btn.secondary:focus {
+      background: var(--racing-white);
+      color: var(--racing-black);
+      border: 2px solid var(--racing-white);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+      transform: scale(1.05);
+    }
+    
+    /* Racing Checkered Pattern */
+    .checkered-pattern {
+      background-image: 
+        linear-gradient(45deg, #000 25%, transparent 25%),
+        linear-gradient(-45deg, #000 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #000 75%),
+        linear-gradient(-45deg, transparent 75%, #000 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      opacity: 0.1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    /* Projects Showcase Section */
+    .services-section {
+      padding: 0 0 100px 0;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+      margin-top: -80px;
+      z-index: 100;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .service-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      border-radius: 25px;
+      overflow: visible;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 0, 0, 0.3);
+      border: 2px solid var(--lightning-red);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+      transform: translateY(0);
+      cursor: pointer;
+    }
+    
+    .card-badge {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--lightning-red) 0%, #cc0000 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffffff;
+      overflow: hidden;
+      top: -20px;
+      left: -20px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-badge img {
+      border-radius: 50%;
+    }
+    
+    .card-badge img {
+      width: 45px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(255, 0, 0, 0.4), 0 0 0 3px rgba(255, 0, 0, 0.5);
+      border-color: var(--lightning-red);
+    }
+    
+    .service-card:hover .card-badge {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 25px rgba(255, 0, 0, 0.7), 0 0 0 3px rgba(255, 255, 255, 0.2);
+    }
+    
+    .service-image {
+      height: 350px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      border-radius: 23px 23px 0 0;
+    }
+    
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
+    
+    /* Image Slider Styles */
+    .image-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .image-slider .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      object-fit: cover;
+    }
+    
+    .image-slider .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .service-card:hover .image-slider .slide.active {
+      transform: scale(1.05);
+    }
+    
+    .slider-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    
+    .slider-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .slider-dots .dot.active {
+      background: var(--lightning-red);
+      border-color: var(--lightning-red);
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    
+    .slider-dots .dot:hover {
+      background: var(--lightning-red);
+      border-color: var(--lightning-red);
+      transform: scale(1.2);
+    }
+    
+    .service-content {
+      padding: 32px;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      border-radius: 0 0 23px 23px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    }
+    
+    .service-content h3 {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    
+    .service-content p {
+      font-size: 1rem;
+      color: #cccccc;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .project-tag {
+      padding: 6px 14px;
+      background: rgba(255, 0, 0, 0.15);
+      border: 1px solid rgba(255, 0, 0, 0.4);
+      border-radius: 20px;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    }
+    
+    .project-tag:hover {
+      background: rgba(255, 0, 0, 0.25);
+      border-color: var(--lightning-red);
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    .service-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--lightning-red);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .service-btn:hover {
+      background: var(--lightning-red);
+      color: #ffffff;
+      transform: translateX(5px);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    }
+    
+    .service-btn:hover::before {
+      left: 100%;
+    }
+    
+    /* Services Offered Section */
+    .services-offered-section {
+      padding: 0 0 100px 0;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .services-offered-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 0, 0, 0.03) 2px,
+          rgba(255, 0, 0, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .services-offered-section .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .services-section-title {
+      font-family: 'Bebas Neue', 'Russo One', 'Orbitron', Arial, sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      background: var(--lightning-red);
+      color: #ffffff;
+      margin-bottom: 4rem;
+      margin-top: 0;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 20px 0;
+      border-radius: 15px;
+    }
+    
+     .services-offered-grid {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 40px;
+       max-width: 1400px;
+       margin: 0 auto;
+     }
+    
+    .service-offered-card {
+      background: #000000;
+      border-radius: 20px;
+      padding: 40px 35px;
+      border: 2px solid var(--lightning-red);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 0, 0, 0.2);
+    }
+    
+    .service-offered-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .service-offered-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 48px rgba(255, 0, 0, 0.4), 0 0 0 2px rgba(255, 0, 0, 0.5);
+      border-color: var(--lightning-red);
+    }
+    
+    .service-offered-card:hover::before {
+      opacity: 1;
+    }
+    
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      position: relative;
+      transition: all 0.4s ease;
+      filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
+    }
+    
+    .service-icon::before,
+    .service-icon::after {
+      content: '';
+      position: absolute;
+    }
+    
+    /* Towing Truck Icon - Simple rectangle truck */
+    .service-icon.towing {
+      border: 3px solid var(--lightning-red);
+      border-radius: 5px;
+      background: transparent;
+    }
+    
+    .service-icon.towing::before {
+      width: 32px;
+      height: 20px;
+      background: var(--lightning-red);
+      top: 15px;
+      left: 10px;
+      border-radius: 3px;
+    }
+    
+    .service-icon.towing::after {
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--lightning-red);
+      border-radius: 50%;
+      background: transparent;
+      top: 50px;
+      left: 12px;
+      box-shadow: 22px 0 0 -3px var(--lightning-red);
+    }
+    
+    /* Paint Brush Icon - Simple vertical line with rounded top */
+    .service-icon.paint {
+      border: none;
+      background: transparent;
+    }
+    
+    .service-icon.paint::before {
+      width: 4px;
+      height: 45px;
+      background: var(--lightning-red);
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .service-icon.paint::after {
+      width: 32px;
+      height: 12px;
+      background: var(--lightning-red);
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 50% 50%;
+    }
+    
+    /* Gear/Engine Icon - Circle with plus cross */
+    .service-icon.engine {
+      border: 3px solid var(--lightning-red);
+      border-radius: 50%;
+      background: transparent;
+    }
+    
+    .service-icon.engine::before {
+      width: 48px;
+      height: 5px;
+      background: var(--lightning-red);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+    }
+    
+    .service-icon.engine::after {
+      width: 5px;
+      height: 48px;
+      background: var(--lightning-red);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+    }
+    
+    .service-offered-card:hover .service-icon {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.9));
+    }
+    
+    .service-offered-card:hover .service-icon.engine {
+      animation: gear-rotate 2s linear infinite;
+    }
+    
+    @keyframes gear-rotate {
+      from { transform: scale(1.15) rotate(0deg); }
+      to { transform: scale(1.15) rotate(360deg); }
+    }
+    
+    .service-offered-card h3 {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.3;
+      text-align: center;
+    }
+    
+    .service-offered-card p {
+      font-size: 1rem;
+      color: #cccccc;
+      line-height: 1.8;
+      text-align: center;
+      font-weight: 400;
+    }
+    
+    .section-title {
+      font-family: 'Bebas Neue', 'Russo One', 'Orbitron', Arial, sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      background: var(--lightning-red);
+      color: #ffffff;
+      margin-bottom: 3rem;
+      margin-top: -20px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 28px 0 12px 0;
+      border-radius: 15px;
+      text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2),
+        0 0 45px rgba(255, 255, 255, 0.1);
+      border-top: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      border-left: none;
+      border-right: none;
+      z-index: 350;
+    }
+    
+    @keyframes digital-shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    @keyframes digital-glow {
+      0% {
+        filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 0, 0, 0.4));
+      }
+      100% {
+        filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 60px rgba(255, 0, 0, 0.6));
+      }
+    }
+    
+    .section-title::before {
+      content: 'OUR PROJECTS';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff3333 0%, var(--lightning-red) 50%, #ff3333 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: digital-shimmer 3s linear infinite reverse;
+      opacity: 0.3;
+      z-index: -1;
+      transform: translate(2px, 2px);
+    }
+    
+    
+    /* Footer Styles */
+    .footer {
+      background: #000000;
+      color: #fff;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo-section {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      height: 60px;
+      width: auto;
+      max-width: 200px;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .footer-logo-section p {
+      color: #ccc;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .footer-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-section ul li a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-section ul li:not(:has(a)) {
+      color: #ccc;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 0.95rem;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      text-align: center;
+    }
+    
+    .footer-bottom p {
+      color: #999;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .design-credit {
+      margin-top: 8px !important;
+      font-size: 0.8rem !important;
+      color: #666 !important;
+    }
+    
+    .company-name {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    
+    /* Responsive Design */
+    @media (min-width: 901px) {
+      .hero-header-overlay {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        height: 72px;
+        padding: 0 32px;
+        gap: 0;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(24,24,24,0.0);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: 300;
+        display: flex;
+        box-shadow: none;
+        color: #222;
+        transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+      }
+      
+      .hero-header-overlay.visible,
+      .hero-header-overlay.at-end {
+        top: 0;
+      }
+      
+      .logo-placeholder {
+        height: 24px;
+        width: auto;
+        margin: 0 10px 0 0;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        transform: translateY(-20%);
+      }
+      
+      .logo-placeholder img {
+        height: 24px;
+        max-height: 24px;
+        width: auto;
+        filter: brightness(0) invert(1);
+        transition: filter 0.3s;
+      }
+      
+      .hero-header-overlay.visible .logo-placeholder img {
+        filter: brightness(0) invert(1);
+      }
+      
+      .hero-header-overlay.visible .logo-placeholder {
+        color: #ffffff;
+        text-shadow: none;
+      }
+      
+      .hero-header-logo-nav {
+        height: 24px;
+        width: auto;
+        margin: 0 10px 0 0;
+        filter: none;
+        display: none;
+        vertical-align: middle;
+        position: relative;
+        transform: translateY(-20%);
+      }
+      
+      .hero-mobile-logo,
+      .hero-mobile-menu-btn,
+      .hero-mobile-dropdown {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .hero-header-nav {
+        display: none !important;
+      }
+      
+      .hero-header-overlay {
+        display: none !important;
+      }
+      
+      .hero-mobile-logo {
+        display: block;
+      }
+      
+      .hero-mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero {
+        min-height: 70vh;
+        height: 70vh;
+        background-attachment: scroll;
+      }
+      
+      .hero-content {
+        margin: 0 auto;
+        margin-top: -20px;
+        padding: 20px;
+      }
+      
+      .hero-headline {
+        font-size: 2.2rem;
+      }
+      
+      .hero-headline img {
+        max-height: 320px;
+        width: auto;
+      }
+      
+      .hero-subheadline {
+        font-size: 1rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+      }
+      
+      .hero-btn {
+        width: 100%;
+        max-width: 280px;
+        min-height: 48px;
+        font-size: 1.05rem;
+        border-radius: 999px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 12px 24px !important;
+        line-height: 1;
+        vertical-align: middle;
+        margin-bottom: 0;
+        touch-action: manipulation;
+      }
+      
+      .hero-btn:active {
+        transform: scale(0.97);
+        box-shadow: 0 2px 12px rgba(231,76,60,0.18);
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 600px;
+        padding: 0 15px;
+      }
+      
+      .service-image {
+        height: 200px;
+      }
+      
+      .service-content h3 {
+        font-size: 1.2rem;
+      }
+      
+      .service-content p {
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+        margin-bottom: 1rem;
+      }
+      
+      .services-section-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+      }
+      
+      .card-badge {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+      }
+      
+      .service-image {
+        height: 220px;
+      }
+      
+      .service-content h3 {
+        font-size: 1.2rem;
+      }
+      
+      .service-content p {
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+        margin-bottom: 1rem;
+      }
+      
+      .services-section-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+      }
+      
+      .footer {
+        padding: 40px 0 20px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 15px;
+      }
+      
+      .footer-logo {
+        height: 50px;
+        max-width: 180px;
+      }
+      
+      .footer-section h3 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      
+      .footer-section ul {
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .services-offered-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .services-section-title {
+        font-size: 2rem;
+        padding: 20px 0;
+        letter-spacing: 2px;
+      }
+      
+      .service-offered-card {
+        padding: 30px 25px;
+      }
+      
+      .service-offered-card h3 {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        padding: 20px 0;
+        letter-spacing: 3px;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+      }
+      
+      .services-section {
+        padding: 0 0 60px 0;
+        margin-top: -60px;
+      }
+      
+      .services-offered-section {
+        padding: 40px 0 60px 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-headline img {
+        max-height: 240px;
+      }
+      
+      .hero-subheadline {
+        font-size: 0.9rem;
+        padding: 0 15px;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        padding: 15px 0;
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+        margin-bottom: 1rem;
+      }
+      
+      .services-section-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        padding: 15px 0;
+      }
+      
+      .service-content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .service-content p {
+        font-size: 0.85rem;
+      }
+      
+      .service-btn {
+        font-size: 0.8rem;
+        padding: 10px 20px;
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+      
+      .service-offered-card {
+        padding: 25px 20px;
+      }
+      
+      .service-offered-card h3 {
+        font-size: 1.1rem;
+      }
+      
+      .service-offered-card p {
+        font-size: 0.9rem;
+      }
+      
+      .services-grid {
+        padding: 0 10px;
+      }
+      
+      .card-badge {
+        width: 55px;
+        height: 55px;
+        top: -15px;
+        left: -15px;
+      }
+      
+      .card-badge img {
+        width: 35px;
+      }
+      
+      .service-image {
+        height: 200px;
+      }
+      
+      .footer {
+        padding: 30px 0 20px;
+      }
+      
+      .footer-content {
+        padding: 0 15px;
+        gap: 20px;
+      }
+      
+      .footer-logo {
+        height: 45px;
+        max-width: 160px;
+      }
+      
+      .footer-logo-section p {
+        font-size: 0.85rem;
+      }
+      
+      .hero-btn {
+        font-size: 0.95rem;
+        padding: 14px 28px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Header Overlay - Transparent -->
+  <div class="hero-header-overlay" id="hero-header-overlay">
+    <nav class="hero-header-nav">
+      <!-- Replace with actual logo image: <img src="./Images/logo.png" alt="Auto Restoration Logo" class="hero-header-logo" /> -->
+      <div class="logo-placeholder">
+        <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-header-logo">
+      </div>
+      <a href="#home">HOME</a>
+      <a href="#services">SERVICES</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <!-- Hero Video Background -->
+    <video class="hero-video" src="./herovideo.mkv" autoplay muted loop playsinline></video>
+    
+    <!-- Mobile Logo and Menu -->
+    <!-- Replace with actual logo: <img src="./Images/logo.png" alt="Auto Restoration Logo" class="hero-mobile-logo" /> -->
+    <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-mobile-logo">
+    <button class="hero-mobile-menu-btn" id="hero-mobile-menu-btn" aria-label="Open menu">☰</button>
+    <div class="hero-mobile-dropdown" id="hero-mobile-dropdown">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="hero-content" id="hero-content">
+      <div class="hero-headline">
+        <img src="./perfection86.webp" alt="PROFESSIONAL AUTO RESTORATION">
+      </div>
+      <div class="hero-subheadline">Mašīnu restaurācijas un pārkrāsošanas pakalpojumi</div>
+      <div class="hero-buttons">
+        <a href="#services" class="hero-btn primary">REALIZĒTIE AUTO PROJEKTI</a>
+        <a href="#contact" class="hero-btn secondary">Get Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Projects Showcase Section -->
+    <section id="services" class="services-section">
+          <h2 class="section-title" data-text="REALIZĒTIE AUTO PROJEKTI">REALIZĒTIE AUTO PROJEKTI</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-badge">
+            <img src="./perfection86.webp" alt="Perfection86 Badge">
+          </div>
+          <div class="service-image">
+            <div class="image-slider mustang-slider">
+              <div class="slider-wrapper">
+                <img src="./1.jpg" alt="Mustang Image 1" class="slide active">
+                <img src="./2.jpg" alt="Mustang Image 2" class="slide">
+                <img src="./3.jpg" alt="Mustang Image 3" class="slide">
+                <img src="./4.jpg" alt="Mustang Image 4" class="slide">
+              </div>
+              <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <div class="project-tags">
+              <span class="project-tag">Engine</span>
+              <span class="project-tag">Paint</span>
+              <span class="project-tag">Interior</span>
+            </div>
+            <h3>1967 Mustang GT</h3>
+            <p>Complete frame-off restoration including engine rebuild, custom paint, and period-correct interior restoration.</p>
+            <a href="#contact" class="service-btn">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="card-badge">
+            <img src="./perfection86.webp" alt="Perfection86 Badge">
+          </div>
+          <div class="service-image">
+            <div class="image-slider corvette-slider">
+              <div class="slider-wrapper">
+                <img src="./11.jpg" alt="Corvette Image 11" class="slide active">
+                <img src="./12.jpg" alt="Corvette Image 12" class="slide">
+                <img src="./13.jpg" alt="Corvette Image 13" class="slide">
+              </div>
+              <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <div class="project-tags">
+              <span class="project-tag">Bodywork</span>
+              <span class="project-tag">Custom Paint</span>
+            </div>
+            <h3>1972 Corvette Stingray</h3>
+            <p>Full body restoration with custom metallic red paint job and fiberglass repair to factory perfection.</p>
+            <a href="#contact" class="service-btn">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="card-badge">
+            <img src="./perfection86.webp" alt="Perfection86 Badge">
+          </div>
+          <div class="service-image">
+            <div class="image-slider chevelle-slider">
+              <div class="slider-wrapper">
+                <img src="./sup1.jpg" alt="Chevelle Image sup1" class="slide active">
+                <img src="./sup2.jpg" alt="Chevelle Image sup2" class="slide">
+                <img src="./sup3.jpg" alt="Chevelle Image sup3" class="slide">
+              </div>
+              <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <div class="project-tags">
+              <span class="project-tag">Interior</span>
+              <span class="project-tag">Upholstery</span>
+              <span class="project-tag">Dashboard</span>
+            </div>
+            <h3>1969 Chevelle SS</h3>
+            <p>Interior complete restoration with custom leather seats, restored dashboard, and modern audio integration.</p>
+            <a href="#contact" class="service-btn">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="card-badge">
+            <img src="./perfection86.webp" alt="Perfection86 Badge">
+          </div>
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2023&q=80" alt="Camaro Restoration">
+          </div>
+          <div class="service-content">
+            <div class="project-tags">
+              <span class="project-tag">Full Restore</span>
+              <span class="project-tag">Engine</span>
+              <span class="project-tag">Paint</span>
+            </div>
+            <h3>1968 Camaro Z/28</h3>
+            <p>Complete nut-and-bolt restoration from ground up, including matching numbers engine rebuild and show-quality paint.</p>
+            <a href="#contact" class="service-btn">View Details →</a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services-offered" class="services-offered-section">
+      <div class="container">
+        <h2 class="services-section-title">Pakalpojumu klāsts</h2>
+        <div class="services-offered-grid">
+          <div class="service-offered-card">
+            <div class="service-icon towing"></div>
+            <h3>Autoevakuātora pakalpojumi</h3>
+            <p>Nogādāsim Tavu iemīļoto transportlīdzekli uz jebkuru Tevis izvēlētu servisu vai vietu.</p>
+          </div>
+          
+          <div class="service-offered-card">
+            <div class="service-icon paint"></div>
+            <h3>Auto virsbūves krāsošana un remonts</h3>
+            <p>Neatkarīgi no tā vai vēlies savam auto atjaunot sākotnējo spīdumu pārkrāsojot visu virsbūvi, vai tikai izlabot kādu nelielu...</p>
+          </div>
+          
+           <div class="service-offered-card">
+             <div class="service-icon engine"></div>
+             <h3>Dzinēju remonts un apkope</h3>
+             <p>Veicam dzinēju kapitālos remontus, kas ietver sevī dzinēja izjaukšanu un defektāciju...</p>
+           </div>
+           
+           <div class="service-offered-card">
+             <div class="service-icon towing"></div>
+             <h3>Pakalpojums 4</h3>
+             <p>Papildu pakalpojuma apraksts.</p>
+           </div>
+           
+           <div class="service-offered-card">
+             <div class="service-icon paint"></div>
+             <h3>Pakalpojums 5</h3>
+             <p>Papildu pakalpojuma apraksts.</p>
+           </div>
+           
+           <div class="service-offered-card">
+             <div class="service-icon engine"></div>
+             <h3>Pakalpojums 6</h3>
+             <p>Papildu pakalpojuma apraksts.</p>
+           </div>
+         </div>
+       </div>
+     </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section footer-logo-section">
+        <img src="./perfection86.webp" alt="Perfection 86 Logo" class="footer-logo">
+        <p>Mašīnu restaurācijas un pārkrāsošanas pakalpojumi</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Ātrie saites</h3>
+        <ul>
+          <li><a href="#services">Pakalpojumi</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Informācija</h3>
+        <ul>
+          <li><a href="tel:+1234567890">Saņemt piedāvājumu</a></li>
+          <li><a href="#privacy">Privātuma politika</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Kontaktinformācija</h3>
+        <ul>
+          <li><a href="mailto:info@autorestore.com">info@autorestore.com</a></li>
+          <li><a href="tel:+1234567890">(123) 456-7890</a></li>
+          <li>123 Restoration Lane, Auto City, AC 12345</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Perfection 86. Visas tiesības aizsargātas.</p>
+      <p class="design-credit">Vietni izstrādāja <span class="company-name">Perfection86</span></p>
+    </div>
+  </footer>
+
+  <script>
+    // Animate hero text on load (fade-in up)
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const heroContent = document.getElementById('hero-content');
+        if (heroContent) {
+          heroContent.classList.add('visible');
+          heroContent.style.opacity = '1';
+          heroContent.style.transform = 'translateY(0)';
+        }
+      }, 200);
+      
+      // Hero header overlay scroll behavior
+      const heroHeader = document.getElementById('hero-header-overlay');
+      
+      function updateHeroHeader() {
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 50) {
+          heroHeader.classList.add('visible');
+        } else {
+          heroHeader.classList.remove('visible');
+        }
+      }
+      
+      // Use throttled scroll handler
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+          window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateHeroHeader);
+      }, { passive: true });
+      
+      window.addEventListener('resize', updateHeroHeader);
+      updateHeroHeader();
+      
+      // Video background doesn't need parallax effect
+      
+      // Mobile hero dropdown menu logic
+      const menuBtn = document.getElementById('hero-mobile-menu-btn');
+      const menuDropdown = document.getElementById('hero-mobile-dropdown');
+      
+      if (menuBtn && menuDropdown) {
+        menuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          menuDropdown.classList.toggle('open');
+          menuBtn.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', function(e) {
+          if (!menuDropdown.contains(e.target) && e.target !== menuBtn) {
+            menuDropdown.classList.remove('open');
+            menuBtn.classList.remove('open');
+          }
+        });
+      }
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href.length > 1) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const offsetTop = target.offsetTop - 80;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+              
+              // Close mobile menu if open
+              if (menuDropdown && menuDropdown.classList.contains('open')) {
+                menuDropdown.classList.remove('open');
+                menuBtn.classList.remove('open');
+              }
+            }
+          }
+        });
+      });
+      
+      // Fade-in animation for service cards on scroll
+      const serviceCards = document.querySelectorAll('.service-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      
+      serviceCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+      
+      // Image slider for 1967 Mustang GT card
+      const mustangSlider = document.querySelector('.mustang-slider');
+      if (mustangSlider) {
+        const slides = mustangSlider.querySelectorAll('.slide');
+        const dots = mustangSlider.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+              slide.classList.add('active');
+            }
+          });
+          
+          dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index) {
+              dot.classList.add('active');
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+        
+        function startSlider() {
+          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        }
+        
+        function stopSlider() {
+          clearInterval(slideInterval);
+        }
+        
+        // Start auto-sliding
+        startSlider();
+        
+        // Pause on hover
+        mustangSlider.addEventListener('mouseenter', stopSlider);
+        mustangSlider.addEventListener('mouseleave', startSlider);
+        
+        // Dot click navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            stopSlider();
+            startSlider();
+          });
+        });
+      }
+      
+      // Image slider for 1972 Corvette Stingray card
+      const corvetteSlider = document.querySelector('.corvette-slider');
+      if (corvetteSlider) {
+        const slides = corvetteSlider.querySelectorAll('.slide');
+        const dots = corvetteSlider.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+              slide.classList.add('active');
+            }
+          });
+          
+          dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index) {
+              dot.classList.add('active');
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+        
+        function startSlider() {
+          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        }
+        
+        function stopSlider() {
+          clearInterval(slideInterval);
+        }
+        
+        // Start auto-sliding
+        startSlider();
+        
+        // Pause on hover
+        corvetteSlider.addEventListener('mouseenter', stopSlider);
+        corvetteSlider.addEventListener('mouseleave', startSlider);
+        
+        // Dot click navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            stopSlider();
+            startSlider();
+          });
+        });
+      }
+      
+      // Image slider for 1969 Chevelle SS card
+      const chevelleSlider = document.querySelector('.chevelle-slider');
+      if (chevelleSlider) {
+        const slides = chevelleSlider.querySelectorAll('.slide');
+        const dots = chevelleSlider.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+              slide.classList.add('active');
+            }
+          });
+          
+          dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index) {
+              dot.classList.add('active');
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+        
+        function startSlider() {
+          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        }
+        
+        function stopSlider() {
+          clearInterval(slideInterval);
+        }
+        
+        // Start auto-sliding
+        startSlider();
+        
+        // Pause on hover
+        chevelleSlider.addEventListener('mouseenter', stopSlider);
+        chevelleSlider.addEventListener('mouseleave', startSlider);
+        
+        // Dot click navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            stopSlider();
+            startSlider();
+          });
+        });
+      }
+      
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
