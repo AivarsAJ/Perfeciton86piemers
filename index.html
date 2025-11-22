@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@600;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --lightning-red: #FF0000;
@@ -63,8 +64,8 @@
     }
     
     .hero-header-overlay.visible {
-      background: #1a1a1a;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+      background: #ffffff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.1);
     }
     
     .hero-header-overlay .hero-header-logo {
@@ -79,7 +80,7 @@
     }
     
     .hero-header-overlay.visible .hero-header-logo {
-      filter: brightness(0) invert(1);
+      filter: brightness(0) invert(0);
     }
     
     .hero-header-overlay .hero-header-logo-nav {
@@ -95,8 +96,8 @@
     
     .hero-header-nav a {
       color: #fff;
-      font-family: 'Orbitron', 'Rajdhani', Arial, sans-serif;
-      font-size: 0.95rem;
+      font-family: 'Bebas Neue', 'Russo One', 'Orbitron', Arial, sans-serif;
+      font-size: 1.15rem;
       text-decoration: none;
       font-weight: 700;
       padding: 0.3em 0.8em;
@@ -117,7 +118,7 @@
     }
     
     .hero-header-overlay.visible .hero-header-nav a {
-      color: #ffffff;
+      color: #000000;
       text-shadow: none;
     }
     
@@ -150,11 +151,11 @@
     }
     
     .hero-header-overlay.visible .logo-placeholder img {
-      filter: brightness(0) invert(1);
+      filter: brightness(0) invert(0);
     }
     
     .hero-header-overlay.visible .logo-placeholder {
-      color: #ffffff;
+      color: #000000;
       text-shadow: none;
     }
     
@@ -220,13 +221,16 @@
     .hero-mobile-dropdown a {
       color: #222;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
+      font-family: 'Bebas Neue', 'Russo One', 'Orbitron', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
       padding: 0.4em 0.7em;
       border-radius: 6px;
       transition: background 0.18s, color 0.18s;
       display: block;
       background: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     
     .hero-mobile-dropdown a:hover {
@@ -258,6 +262,7 @@
       -moz-playsinline: true;
       -ms-playsinline: true;
       playsinline: true;
+      -webkit-playsinline: true;
     }
     
     @media (max-width: 900px) {
@@ -421,7 +426,7 @@
     /* Projects Showcase Section */
     .services-section {
       padding: 0 0 100px 0;
-      background: #1a1a1a;
+      background: #2a2a2a;
       position: relative;
       overflow: hidden;
       margin-top: -80px;
@@ -438,11 +443,11 @@
     }
     
     .service-card {
-      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
       border-radius: 25px;
       overflow: visible;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 0, 0, 0.3);
-      border: 2px solid var(--lightning-red);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.3);
+      border: 2px solid #ffffff;
       position: relative;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       opacity: 1;
@@ -480,8 +485,8 @@
     
     .service-card:hover {
       transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 16px 48px rgba(255, 0, 0, 0.4), 0 0 0 3px rgba(255, 0, 0, 0.5);
-      border-color: var(--lightning-red);
+      box-shadow: 0 16px 48px rgba(255, 255, 255, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.5);
+      border-color: #ffffff;
     }
     
     .service-card:hover .card-badge {
@@ -493,7 +498,7 @@
       height: 350px;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
       border-radius: 23px 23px 0 0;
     }
     
@@ -580,7 +585,7 @@
       position: relative;
       z-index: 2;
       border-radius: 0 0 23px 23px;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
     }
     
     .service-content h3 {
@@ -675,7 +680,8 @@
     /* Services Offered Section */
     .services-offered-section {
       padding: 0 0 100px 0;
-      background: #1a1a1a;
+      margin-top: -20px;
+      background: #2a2a2a;
       position: relative;
       overflow: hidden;
     }
@@ -712,17 +718,26 @@
       font-size: 3.5rem;
       font-weight: 900;
       text-align: center;
-      background: var(--lightning-red);
-      color: #ffffff;
+      background: #ffffff;
+      color: #2a2a2a;
       margin-bottom: 4rem;
       margin-top: 0;
       letter-spacing: 10px;
       text-transform: uppercase;
       position: relative;
       display: block;
-      width: 100%;
-      padding: 20px 0;
-      border-radius: 15px;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 0;
+      margin-right: 0;
+      padding: 32px 0 16px 0;
+      border-radius: 0;
+      border-top: 4px solid #000000;
+      border-bottom: 4px solid #000000;
+      border-left: none;
+      border-right: none;
+      box-sizing: border-box;
     }
     
      .services-offered-grid {
@@ -734,14 +749,14 @@
      }
     
     .service-offered-card {
-      background: #000000;
+      background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
       border-radius: 20px;
       padding: 40px 35px;
-      border: 2px solid var(--lightning-red);
+      border: 2px solid #ffffff;
       position: relative;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 0, 0, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2);
     }
     
     .service-offered-card::before {
@@ -759,8 +774,8 @@
     
     .service-offered-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 16px 48px rgba(255, 0, 0, 0.4), 0 0 0 2px rgba(255, 0, 0, 0.5);
-      border-color: var(--lightning-red);
+      box-shadow: 0 16px 48px rgba(255, 255, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.5);
+      border-color: #ffffff;
     }
     
     .service-offered-card:hover::before {
@@ -901,8 +916,8 @@
       font-size: 3.5rem;
       font-weight: 900;
       text-align: center;
-      background: var(--lightning-red);
-      color: #ffffff;
+      background: #ffffff;
+      color: #2a2a2a;
       margin-bottom: 3rem;
       margin-top: -20px;
       letter-spacing: 8px;
@@ -910,17 +925,78 @@
       position: relative;
       display: block;
       width: 100%;
-      padding: 28px 0 12px 0;
-      border-radius: 15px;
-      text-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.3),
-        0 0 30px rgba(255, 255, 255, 0.2),
-        0 0 45px rgba(255, 255, 255, 0.1);
-      border-top: 2px solid #000000;
-      border-bottom: 2px solid #000000;
+      padding: 32px 0 16px 0;
+      border-radius: 15px 15px 0 0;
+      text-shadow: 0 2px 4px rgba(42, 42, 42, 0.2), 0 4px 8px rgba(42, 42, 42, 0.15);
+      border-top: 4px solid #000000;
+      border-bottom: 4px solid #000000;
       border-left: none;
       border-right: none;
       z-index: 350;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 8px 40px rgba(0, 0, 0, 0.1);
+      overflow: visible;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Toy Car Animation */
+    .toy-car-container {
+      position: absolute;
+      top: 3%;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 401;
+      transform: translateY(0);
+      margin-top: 0;
+      display: none; /* Hidden for now, can be restored by removing this line */
+    }
+    
+    .toy-car {
+      position: absolute;
+      left: -150px;
+      top: 56%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 401;
+    }
+    
+    .bmw-car-image {
+      width: auto;
+      height: 80px;
+      max-width: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+      display: block;
+    }
+    
+    .toy-car.animate {
+      animation: car-race 5s ease-in-out forwards;
+      opacity: 1;
+    }
+    
+    @keyframes car-race {
+      0% {
+        left: -150px;
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-50%) scale(1.08);
+      }
+      95% {
+        opacity: 1;
+      }
+      100% {
+        left: calc(100% + 150px);
+        transform: translateY(-50%) scale(1);
+        opacity: 0;
+      }
     }
     
     @keyframes digital-shimmer {
@@ -937,23 +1013,6 @@
       }
     }
     
-    .section-title::before {
-      content: 'OUR PROJECTS';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ff3333 0%, var(--lightning-red) 50%, #ff3333 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% auto;
-      animation: digital-shimmer 3s linear infinite reverse;
-      opacity: 0.3;
-      z-index: -1;
-      transform: translate(2px, 2px);
-    }
     
     
     /* Footer Styles */
@@ -1058,6 +1117,40 @@
       font-weight: 500;
     }
     
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--lightning-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+      z-index: 999;
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+    
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      background: var(--racing-red);
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.7);
+    }
+    
     /* Responsive Design */
     @media (min-width: 901px) {
       .hero-header-overlay {
@@ -1106,11 +1199,11 @@
       }
       
       .hero-header-overlay.visible .logo-placeholder img {
-        filter: brightness(0) invert(1);
+        filter: brightness(0) invert(0);
       }
       
       .hero-header-overlay.visible .logo-placeholder {
-        color: #ffffff;
+        color: #000000;
         text-shadow: none;
       }
       
@@ -1147,6 +1240,14 @@
       
       .hero-mobile-menu-btn {
         display: block;
+      }
+      
+      .toy-car-container {
+        display: none !important;
+      }
+      
+      .toy-car {
+        display: none !important;
       }
       
       .hero {
@@ -1439,6 +1540,14 @@
         max-width: 252.7px;
         min-height: 43.32px;
       }
+      
+      .scroll-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -1460,7 +1569,7 @@
   <!-- Hero Section -->
   <header class="hero" id="home">
     <!-- Hero Video Background -->
-    <video class="hero-video" src="./herovideo.mkv" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="allow"></video>
+    <video class="hero-video" src="./herovideo.mkv" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="allow" disablePictureInPicture style="pointer-events: none;"></video>
     
     <!-- Mobile Logo and Menu -->
     <!-- Replace with actual logo: <img src="./Images/logo.png" alt="Auto Restoration Logo" class="hero-mobile-logo" /> -->
@@ -1491,6 +1600,11 @@
     <!-- Projects Showcase Section -->
     <section id="services" class="services-section">
           <h2 class="section-title" data-text="REALIZĒTIE AUTO PROJEKTI">REALIZĒTIE AUTO PROJEKTI</h2>
+          <div class="toy-car-container">
+            <div class="toy-car" id="toy-car">
+              <img src="./bmw.png" alt="BMW Car" class="bmw-car-image">
+            </div>
+          </div>
       <div class="services-grid">
         <div class="service-card">
           <div class="card-badge">
@@ -1499,10 +1613,10 @@
           <div class="service-image">
             <div class="image-slider mustang-slider">
               <div class="slider-wrapper">
-                <img src="./1.jpg" alt="Mustang Image 1" class="slide active">
-                <img src="./2.jpg" alt="Mustang Image 2" class="slide">
-                <img src="./3.jpg" alt="Mustang Image 3" class="slide">
-                <img src="./4.jpg" alt="Mustang Image 4" class="slide">
+                <img src="./1.jpg" alt="Nissan R34 Skyline Image 1" class="slide active">
+                <img src="./2.jpg" alt="Nissan R34 Skyline Image 2" class="slide">
+                <img src="./3.jpg" alt="Nissan R34 Skyline Image 3" class="slide">
+                <img src="./4.jpg" alt="Nissan R34 Skyline Image 4" class="slide">
               </div>
               <div class="slider-dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1514,13 +1628,13 @@
           </div>
           <div class="service-content">
             <div class="project-tags">
-              <span class="project-tag">Engine</span>
-              <span class="project-tag">Paint</span>
-              <span class="project-tag">Interior</span>
+              <span class="project-tag">Krāsošana</span>
+              <span class="project-tag">Virsbūves remonts</span>
+              <span class="project-tag">Gruntēšana</span>
             </div>
-            <h3>1967 Mustang GT</h3>
-            <p>Complete frame-off restoration including engine rebuild, custom paint, and period-correct interior restoration.</p>
-            <a href="#contact" class="service-btn">View Details →</a>
+            <h3>NISSAN R34 SKYLINE</h3>
+            <p>Pilnīga virsbūves pārkrāsošana un atjaunošana pilnā spektrā - veicam visu virsbūves sagatavošanu, noņemam veco krāsu, izlīdzinam visas virsmas un novēršam defektus. Pēc tam seko profesionāla gruntēšana un augstas kvalitātes krāsošana ar mūsdienīgākajiem materiāliem, nodrošinot ideālu rezultātu visā virsbūvē.</p>
+            <a href="#contact" class="service-btn">Skatīt detalizēti →</a>
           </div>
         </div>
         
@@ -1531,9 +1645,9 @@
           <div class="service-image">
             <div class="image-slider corvette-slider">
               <div class="slider-wrapper">
-                <img src="./11.jpg" alt="Corvette Image 11" class="slide active">
-                <img src="./12.jpg" alt="Corvette Image 12" class="slide">
-                <img src="./13.jpg" alt="Corvette Image 13" class="slide">
+                <img src="./11.jpg" alt="BMW E30 Image 11" class="slide active">
+                <img src="./12.jpg" alt="BMW E30 Image 12" class="slide">
+                <img src="./13.jpg" alt="BMW E30 Image 13" class="slide">
               </div>
               <div class="slider-dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1544,12 +1658,13 @@
           </div>
           <div class="service-content">
             <div class="project-tags">
-              <span class="project-tag">Bodywork</span>
-              <span class="project-tag">Custom Paint</span>
+              <span class="project-tag">Pilnīga restaurācija</span>
+              <span class="project-tag">Dzinējs</span>
+              <span class="project-tag">Virsbūve</span>
             </div>
-            <h3>1972 Corvette Stingray</h3>
-            <p>Full body restoration with custom metallic red paint job and fiberglass repair to factory perfection.</p>
-            <a href="#contact" class="service-btn">View Details →</a>
+            <h3>BMW E30</h3>
+            <p>Pilnīga auto restaurācija, kas ietver visu transportlīdzekļa atjaunošanu no nulles. Veicam dzinēja kapitālo remontu, pilnīgu virsbūves restaurāciju, krāsošanu, interjera atjaunošanu un visu detaļu nomaiņu, nodrošinot oriģinālu izskatu un uzticamu darbību.</p>
+            <a href="#contact" class="service-btn">Skatīt detalizēti →</a>
           </div>
         </div>
         
@@ -1560,9 +1675,9 @@
           <div class="service-image">
             <div class="image-slider chevelle-slider">
               <div class="slider-wrapper">
-                <img src="./sup1.jpg" alt="Chevelle Image sup1" class="slide active">
-                <img src="./sup2.jpg" alt="Chevelle Image sup2" class="slide">
-                <img src="./sup3.jpg" alt="Chevelle Image sup3" class="slide">
+                <img src="./sup3.jpg" alt="Toyota Supra Image sup3" class="slide active">
+                <img src="./sup1.jpg" alt="Toyota Supra Image sup1" class="slide">
+                <img src="./sup2.jpg" alt="Toyota Supra Image sup2" class="slide">
               </div>
               <div class="slider-dots">
                 <span class="dot active" data-slide="0"></span>
@@ -1573,13 +1688,13 @@
           </div>
           <div class="service-content">
             <div class="project-tags">
-              <span class="project-tag">Interior</span>
-              <span class="project-tag">Upholstery</span>
-              <span class="project-tag">Dashboard</span>
+              <span class="project-tag">Pilnīga restaurācija</span>
+              <span class="project-tag">Virsbūve</span>
+              <span class="project-tag">Dzinējs</span>
             </div>
-            <h3>1969 Chevelle SS</h3>
-            <p>Interior complete restoration with custom leather seats, restored dashboard, and modern audio integration.</p>
-            <a href="#contact" class="service-btn">View Details →</a>
+            <h3>TOYOTA SUPRA</h3>
+            <p>Pilnīga restaurācija visā spektrā - no dzinēja kapitālā remonta līdz virsbūves atjaunošanai. Restaurācijas process ietver visu sistēmu pārbaudi, defektāciju, nepieciešamo komponentu nomaiņu un profesionālu krāsošanu. Nodrošinām, ka jūsu auto iegūst oriģinālu izskatu un atkal darbojas kā jauns.</p>
+            <a href="#contact" class="service-btn">Skatīt detalizēti →</a>
           </div>
         </div>
         
@@ -1588,17 +1703,28 @@
             <img src="./perfection86.webp" alt="Perfection86 Badge">
           </div>
           <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2023&q=80" alt="Camaro Restoration">
+            <div class="image-slider camaro-slider">
+              <div class="slider-wrapper">
+                <img src="./z1.jpg" alt="Toyota Supra Image z1" class="slide active">
+                <img src="./z2.jpg" alt="Toyota Supra Image z2" class="slide">
+                <img src="./sup.jpg" alt="Toyota Supra Image sup" class="slide">
+              </div>
+              <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+              </div>
+            </div>
           </div>
           <div class="service-content">
             <div class="project-tags">
-              <span class="project-tag">Full Restore</span>
-              <span class="project-tag">Engine</span>
-              <span class="project-tag">Paint</span>
+              <span class="project-tag">Pilnīga restaurācija</span>
+              <span class="project-tag">Dzinējs</span>
+              <span class="project-tag">Virsbūve</span>
             </div>
-            <h3>1968 Camaro Z/28</h3>
-            <p>Complete nut-and-bolt restoration from ground up, including matching numbers engine rebuild and show-quality paint.</p>
-            <a href="#contact" class="service-btn">View Details →</a>
+            <h3>TOYOTA SUPRA</h3>
+            <p>Pilnīga restaurācija visā spektrā - no dzinēja kapitālā remonta līdz virsbūves atjaunošanai. Restaurācijas process ietver visu sistēmu pārbaudi, defektāciju, nepieciešamo komponentu nomaiņu un profesionālu krāsošanu. Nodrošinām, ka jūsu auto iegūst oriģinālu izskatu un atkal darbojas kā jauns.</p>
+            <a href="#contact" class="service-btn">Skatīt detalizēti →</a>
           </div>
         </div>
         
@@ -1613,38 +1739,38 @@
           <div class="service-offered-card">
             <div class="service-icon towing"></div>
             <h3>Autoevakuātora pakalpojumi</h3>
-            <p>Nogādāsim Tavu iemīļoto transportlīdzekli uz jebkuru Tevis izvēlētu servisu vai vietu.</p>
+            <p>Nereti gadās, ka dažādu iemeslu dēļ auto pēkšņi vairs nav iespējams iedarbināt vai nav iespējams piedalīties satiksmē. Visbiežāk šādu situāciju gadījumos pirmā doma ir – zvans draugam, bet ne vienmēr tas ir labākais risinājums.</p>
           </div>
           
           <div class="service-offered-card">
             <div class="service-icon paint"></div>
             <h3>Auto virsbūves krāsošana un remonts</h3>
-            <p>Neatkarīgi no tā vai vēlies savam auto atjaunot sākotnējo spīdumu pārkrāsojot visu virsbūvi, vai tikai izlabot kādu nelielu...</p>
+            <p>Auto krāsošana ir darbs ar kuru agrāk vai vēlāk nākas saskarties gandrīz ikvienam auto vadītājam. Neatkarīgi no tā vai vēlies savam auto atjaunot sākotnējo spīdumu pārkrāsojot visu virsbūvi, vai tikai izlabot kādu nelielu defektu, Perfection 86 meistari par to parūpēsies.</p>
           </div>
           
            <div class="service-offered-card">
              <div class="service-icon engine"></div>
              <h3>Dzinēju remonts un apkope</h3>
-             <p>Veicam dzinēju kapitālos remontus, kas ietver sevī dzinēja izjaukšanu un defektāciju...</p>
+             <p>Dzinējs ir viens no vissarežģītākajiem automašīnas agregātiem. No motora tehniskā stāvokļa ir atkarīga tā jauda, degvielas un eļļas patēriņš, kā arī visa automobiļa ekspluatācija. Tāpēc visā automobiļa ekspluatācijas laikā ir ļoti svarīgi savlaicīgi ievērot un novērst visus, tā atsevišķo mehānismu un sistēmas darbības traucējumus, kā arī veikt savlaicīgas apkopes.</p>
            </div>
            
-           <div class="service-offered-card">
-             <div class="service-icon towing"></div>
-             <h3>Pakalpojums 4</h3>
-             <p>Papildu pakalpojuma apraksts.</p>
-           </div>
+          <div class="service-offered-card">
+            <div class="service-icon towing"></div>
+            <h3>Ritošās daļas remonts</h3>
+            <p>Visbiežākās problēmas ar ritošo daļu var novērot bremžu sistēmā, savirzē, stūres mehānismā.<br><br>Kā jebkura auto remonta procesa sākumā ir jāveic diagnostika, lai precīzi saprastu, kura detaļa ir nolietojusies vai bojāta. Nereti, protams, izjūtot konkrētus traucējumus auto vadīšanā var secināt uzreiz, kas tieši ir par problēmu, bet ne vienmēr.</p>
+          </div>
            
-           <div class="service-offered-card">
-             <div class="service-icon paint"></div>
-             <h3>Pakalpojums 5</h3>
-             <p>Papildu pakalpojuma apraksts.</p>
-           </div>
+          <div class="service-offered-card">
+            <div class="service-icon paint"></div>
+            <h3>VIRSBŪVES PULEŠANA</h3>
+            <p>Automašīnas virsbūves pulēšanu var veikt neatkarīgi no krāsas un izmēra. Auto pulēšana komplektā ar auto vaskošanu pasargās automašīnu no apkārtējās vides – lietus, sāļiem, apkārtējās ķīmijas. Auto virsbūves pulēšanas laiks un izmaksas iespējams noteikt redzot automašīnu un saprotot klienta vēlmes un iespējas.</p>
+          </div>
            
-           <div class="service-offered-card">
-             <div class="service-icon engine"></div>
-             <h3>Pakalpojums 6</h3>
-             <p>Papildu pakalpojuma apraksts.</p>
-           </div>
+          <div class="service-offered-card">
+            <div class="service-icon engine"></div>
+            <h3>RESTUARĀCIJA</h3>
+            <p>Perfection 86 darbnīca nodarbojas ar profesionālu auto restaurāciju no A līdz Z! Ja Tavā īpašumā ir kāds sens vai īpašs auto, kuru skāris "laika zobs", bet vēlies tam dot otro dzīvību – mēs Tev palīdzēsim. Esam restaurējuši tādus ikoniskus auto kā Wandarer W23, Nissan Skyline R34, Toyota Supra, BMW E30, Toyota AE86 un daudz citu.</p>
+          </div>
          </div>
        </div>
      </section>
@@ -1692,6 +1818,47 @@
   <script>
     // Animate hero text on load (fade-in up)
     document.addEventListener('DOMContentLoaded', function() {
+      // Fix video autoplay on iOS devices
+      const heroVideo = document.querySelector('.hero-video');
+      if (heroVideo) {
+        // Force attributes for iOS compatibility
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+        heroVideo.setAttribute('x-webkit-airplay', 'allow');
+        heroVideo.muted = true;
+        heroVideo.autoplay = true;
+        
+        // Function to attempt video play
+        function attemptPlay() {
+          const playPromise = heroVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              // Auto-play was prevented
+              console.log('Video autoplay prevented, will play on user interaction');
+            });
+          }
+        }
+        
+        // Try to play immediately
+        attemptPlay();
+        
+        // Try to play when video metadata is loaded
+        heroVideo.addEventListener('loadedmetadata', attemptPlay);
+        heroVideo.addEventListener('canplay', attemptPlay);
+        heroVideo.addEventListener('loadeddata', attemptPlay);
+        
+        // Play on first user interaction (iOS requirement)
+        const playOnInteraction = function() {
+          attemptPlay();
+          document.removeEventListener('touchstart', playOnInteraction);
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('scroll', playOnInteraction);
+        };
+        document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
+        document.addEventListener('click', playOnInteraction, { once: true });
+        window.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
+      }
+      
       setTimeout(function() {
         const heroContent = document.getElementById('hero-content');
         if (heroContent) {
@@ -1790,7 +1957,7 @@
         observer.observe(card);
       });
       
-      // Image slider for 1967 Mustang GT card
+      // Image slider for Nissan R34 Skyline card
       const mustangSlider = document.querySelector('.mustang-slider');
       if (mustangSlider) {
         const slides = mustangSlider.querySelectorAll('.slide');
@@ -1845,7 +2012,7 @@
         });
       }
       
-      // Image slider for 1972 Corvette Stingray card
+      // Image slider for BMW E30 card
       const corvetteSlider = document.querySelector('.corvette-slider');
       if (corvetteSlider) {
         const slides = corvetteSlider.querySelectorAll('.slide');
@@ -1900,7 +2067,7 @@
         });
       }
       
-      // Image slider for 1969 Chevelle SS card
+      // Image slider for Toyota Supra card
       const chevelleSlider = document.querySelector('.chevelle-slider');
       if (chevelleSlider) {
         const slides = chevelleSlider.querySelectorAll('.slide');
@@ -1955,10 +2122,151 @@
         });
       }
       
+      // Image slider for Camaro/Supra card with z1, z2, z3 images
+      const camaroSlider = document.querySelector('.camaro-slider');
+      if (camaroSlider) {
+        const slides = camaroSlider.querySelectorAll('.slide');
+        const dots = camaroSlider.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+              slide.classList.add('active');
+            }
+          });
+          
+          dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index) {
+              dot.classList.add('active');
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+        
+        function startSlider() {
+          slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        }
+        
+        function stopSlider() {
+          clearInterval(slideInterval);
+        }
+        
+        // Start auto-sliding
+        startSlider();
+        
+        // Pause on hover
+        camaroSlider.addEventListener('mouseenter', stopSlider);
+        camaroSlider.addEventListener('mouseleave', startSlider);
+        
+        // Dot click navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            stopSlider();
+            startSlider();
+          });
+        });
+      }
+      
+      // Scroll to Top Button
+      const scrollTopBtn = document.getElementById('scrollTop');
+      
+      if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('visible');
+          } else {
+            scrollTopBtn.classList.remove('visible');
+          }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+      
+      // Toy Car Animation on Scroll
+      const toyCar = document.getElementById('toy-car');
+      const servicesSection = document.getElementById('services');
+      let carAnimated = false;
+      
+      function checkCarAnimation() {
+        if (carAnimated) return;
+        
+        if (servicesSection) {
+          const rect = servicesSection.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isVisible && toyCar) {
+            toyCar.classList.add('animate');
+            carAnimated = true;
+          }
+        }
+      }
+      
+      // Check on scroll
+      window.addEventListener('scroll', checkCarAnimation);
+      
+      // Check on load
+      checkCarAnimation();
+      
     });
   </script>
+  
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
