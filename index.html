@@ -44,6 +44,108 @@
       position: relative;
     }
     
+    body.loading {
+      overflow: hidden;
+    }
+    
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .loading-logo {
+      width: auto;
+      height: 120px;
+      max-width: 400px;
+      margin-bottom: 50px;
+      filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+      animation: logoPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes logoPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.8));
+        transform: scale(1.02);
+      }
+    }
+    
+    .loading-progress-container {
+      width: 300px;
+      max-width: 90%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .loading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--lightning-red) 0%, #ff3333 50%, var(--lightning-red) 100%);
+      background-size: 200% 100%;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.3);
+      animation: progressShimmer 2s linear infinite;
+    }
+    
+    @keyframes progressShimmer {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+    
+    .loading-percentage {
+      margin-top: 20px;
+      color: #ffffff;
+      font-family: 'Bebas Neue', 'Russo One', 'Orbitron', Arial, sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .loading-logo {
+        height: 80px;
+        max-width: 250px;
+        margin-bottom: 40px;
+      }
+      
+      .loading-progress-container {
+        width: 250px;
+      }
+      
+      .loading-percentage {
+        font-size: 1rem;
+      }
+    }
+    
     /* Hero Header Overlay - Transparent at top */
     .hero-header-overlay {
       position: fixed;
@@ -1826,6 +1928,14 @@
   </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <img src="./perfection86.webp" alt="Perfection 86 Logo" class="loading-logo">
+    <div class="loading-progress-container">
+      <div class="loading-progress-bar" id="loadingProgressBar"></div>
+    </div>
+    <div class="loading-percentage" id="loadingPercentage">0%</div>
+  </div>
   <!-- Hero Header Overlay - Transparent -->
   <div class="hero-header-overlay" id="hero-header-overlay">
     <nav class="hero-header-nav">
@@ -2144,6 +2254,105 @@
   </footer>
 
   <script>
+    // Loading Screen Logic
+    (function() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      const progressBar = document.getElementById('loadingProgressBar');
+      const loadingPercentage = document.getElementById('loadingPercentage');
+      
+      if (!loadingScreen || !progressBar || !loadingPercentage) return;
+      
+      // Collect all images and videos (excluding loading screen logo)
+      const images = Array.from(document.querySelectorAll('img')).filter(img => 
+        !img.classList.contains('loading-logo')
+      );
+      const videos = document.querySelectorAll('video');
+      const totalAssets = images.length + videos.length;
+      let loadedAssets = 0;
+      
+      // If no assets to load, hide loader immediately
+      if (totalAssets === 0) {
+        setTimeout(() => {
+          loadingScreen.classList.add('hidden');
+          document.body.classList.remove('loading');
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }, 500);
+        return;
+      }
+      
+      function updateProgress() {
+        const progress = Math.min(Math.round((loadedAssets / totalAssets) * 100), 100);
+        progressBar.style.width = progress + '%';
+        loadingPercentage.textContent = progress + '%';
+        
+        if (loadedAssets >= totalAssets) {
+          // Small delay to show 100%
+          setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            document.body.classList.remove('loading');
+            // Remove from DOM after animation
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }, 300);
+        }
+      }
+      
+      // Track image loading
+      images.forEach(img => {
+        if (img.complete) {
+          loadedAssets++;
+          updateProgress();
+        } else {
+          img.addEventListener('load', () => {
+            loadedAssets++;
+            updateProgress();
+          });
+          img.addEventListener('error', () => {
+            loadedAssets++;
+            updateProgress();
+          });
+        }
+      });
+      
+      // Track video loading
+      videos.forEach(video => {
+        if (video.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+          loadedAssets++;
+          updateProgress();
+        } else {
+          video.addEventListener('canplaythrough', () => {
+            loadedAssets++;
+            updateProgress();
+          }, { once: true });
+          video.addEventListener('error', () => {
+            loadedAssets++;
+            updateProgress();
+          }, { once: true });
+        }
+      });
+      
+      // Fallback: hide loader after max time (10 seconds)
+      setTimeout(() => {
+        if (!loadingScreen.classList.contains('hidden')) {
+          progressBar.style.width = '100%';
+          loadingPercentage.textContent = '100%';
+          setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            document.body.classList.remove('loading');
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }, 300);
+        }
+      }, 10000);
+      
+      // Initialize body with loading class
+      document.body.classList.add('loading');
+    })();
+    
     // Animate hero text on load (fade-in up)
     document.addEventListener('DOMContentLoaded', function() {
       // Fix video autoplay on iOS devices
@@ -2423,6 +2632,7 @@
   </button>
 </body>
 </html>
+
 
 
 
