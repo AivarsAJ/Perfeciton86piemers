@@ -21,7 +21,7 @@
       --racing-gray: #1a1a1a;
       --white: #FFFFFF;
       --overlay-dark: rgba(0, 0, 0, 0.5);
-      --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.7) 100%);
+      --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.8) 85%, rgba(0,0,0,1) 100%);
       --headline-size: 3.5rem;
       --subheadline-size: 1.35rem;
       --button-radius: 999px;
@@ -167,8 +167,8 @@
     }
     
     .hero-header-overlay.visible {
-      background: linear-gradient(to right, #d0d0d0 0%, #e8e8e8 5%, #ffffff 20%, #ffffff 80%, #e8e8e8 95%, #d0d0d0 100%);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+      background: #1a1a1a;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
     }
     
     .hero-header-overlay .hero-header-logo {
@@ -184,7 +184,7 @@
     }
     
     .hero-header-overlay.visible .hero-header-logo {
-      filter: brightness(0) invert(0);
+      filter: brightness(0) invert(1);
     }
     
     .hero-header-overlay .hero-header-logo-nav {
@@ -222,8 +222,8 @@
     }
     
     .hero-header-overlay.visible .hero-header-nav a {
-      color: #000000;
-      text-shadow: none;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.32);
     }
     
     .hero-header-overlay.visible .hero-header-nav a:hover {
@@ -255,12 +255,12 @@
     }
     
     .hero-header-overlay.visible .logo-placeholder img {
-      filter: brightness(0) invert(0);
+      filter: brightness(0) invert(1);
     }
     
     .hero-header-overlay.visible .logo-placeholder {
-      color: #000000;
-      text-shadow: none;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.32);
     }
     
     /* Mobile Logo and Menu Button */
@@ -280,7 +280,7 @@
     .hero-mobile-menu-btn {
       position: absolute;
       top: 18px;
-      left: 18px;
+      right: 18px;
       z-index: 10;
       height: 38px;
       width: 38px;
@@ -293,7 +293,14 @@
       justify-content: center;
       font-size: 1.5rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .hero-mobile-menu-btn.visible {
+      opacity: 1;
+      pointer-events: all;
     }
     
     .hero-mobile-menu-btn:active,
@@ -307,7 +314,7 @@
       display: none;
       position: absolute;
       top: 62px;
-      left: 18px;
+      right: 18px;
       z-index: 20;
       background: #fff;
       border-radius: 12px;
@@ -792,22 +799,7 @@
     }
     
     .services-offered-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 2px,
-          rgba(255, 0, 0, 0.03) 2px,
-          rgba(255, 0, 0, 0.03) 4px
-        );
-      pointer-events: none;
-      z-index: 1;
+      display: none;
     }
     
     .services-offered-section .container {
@@ -823,8 +815,8 @@
       font-size: 3.5rem;
       font-weight: 900;
       text-align: center;
-      background: linear-gradient(to right, #808080 0%, #a0a0a0 8%, #ffffff 30%, #ffffff 70%, #a0a0a0 92%, #808080 100%);
-      color: #2a2a2a;
+      background: #1a1a1a;
+      color: #ffffff;
       margin-bottom: 4rem;
       margin-top: -15px;
       letter-spacing: 10px;
@@ -844,6 +836,7 @@
       border-right: none;
       box-sizing: border-box;
       z-index: 450;
+      box-shadow: none;
     }
     
      .services-offered-grid {
@@ -1089,10 +1082,10 @@
       font-size: 3.5rem;
       font-weight: 900;
       text-align: center;
-      background: linear-gradient(to right, #d0d0d0 0%, #e8e8e8 5%, #ffffff 20%, #ffffff 80%, #e8e8e8 95%, #d0d0d0 100%);
-      color: #2a2a2a;
+      background: #1a1a1a;
+      color: #ffffff;
       margin-bottom: 3rem;
-      margin-top: -20px;
+      margin-top: -15px;
       letter-spacing: 8px;
       text-transform: uppercase;
       position: relative;
@@ -1100,13 +1093,13 @@
       width: 100%;
       padding: 32px 0 16px 0;
       border-radius: 15px 15px 0 0;
-      text-shadow: 0 2px 4px rgba(42, 42, 42, 0.2), 0 4px 8px rgba(42, 42, 42, 0.15);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
       border-top: none;
       border-bottom: none;
       border-left: none;
       border-right: none;
       z-index: 350;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 8px 40px rgba(0, 0, 0, 0.1);
+      box-shadow: none;
       overflow: visible;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -1504,6 +1497,10 @@
         transition: background 0.3s, box-shadow 0.3s, color 0.3s;
       }
       
+      .partners-slider {
+        margin-top: 30px !important;
+      }
+      
       .hero-header-overlay.visible,
       .hero-header-overlay.at-end {
         top: 0;
@@ -1528,12 +1525,12 @@
       }
       
       .hero-header-overlay.visible .logo-placeholder img {
-        filter: brightness(0) invert(0);
+        filter: brightness(0) invert(1);
       }
       
       .hero-header-overlay.visible .logo-placeholder {
-        color: #000000;
-        text-shadow: none;
+        color: #ffffff;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.32);
       }
       
       .hero-header-logo-nav {
@@ -1662,17 +1659,19 @@
         border-top: none;
         border-bottom: none;
         margin-bottom: 1rem;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .services-section-title {
         font-size: 2.5rem;
         letter-spacing: 4px;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .hero-header-overlay.visible {
-        background: #ffffff !important;
+        background: #1a1a1a !important;
       }
       
       .card-badge {
@@ -1710,13 +1709,15 @@
         border-top: none;
         border-bottom: none;
         margin-bottom: 1rem;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .services-section-title {
         font-size: 2rem;
         letter-spacing: 3px;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .footer {
@@ -1749,7 +1750,8 @@
         padding: 20px 0;
         letter-spacing: 2px;
         margin-bottom: 2rem;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .service-offered-card {
@@ -1769,7 +1771,8 @@
         border-radius: 0;
         border-top: none;
         border-bottom: none;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .services-section {
@@ -1832,14 +1835,16 @@
         border-top: none;
         border-bottom: none;
         margin-bottom: 1rem;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .services-section-title {
         font-size: 1.5rem;
         letter-spacing: 2px;
         padding: 15px 0;
-        background: #ffffff !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
       }
       
       .service-content h3 {
@@ -2457,6 +2462,20 @@
       // Mobile hero dropdown menu logic
       const menuBtn = document.getElementById('hero-mobile-menu-btn');
       const menuDropdown = document.getElementById('hero-mobile-dropdown');
+      
+      // Show menu button after user interaction
+      const showMenuButton = function() {
+        if (menuBtn) {
+          menuBtn.classList.add('visible');
+        }
+        document.removeEventListener('touchstart', showMenuButton);
+        document.removeEventListener('click', showMenuButton);
+        document.removeEventListener('scroll', showMenuButton);
+      };
+      
+      document.addEventListener('touchstart', showMenuButton, { once: true, passive: true });
+      document.addEventListener('click', showMenuButton, { once: true });
+      window.addEventListener('scroll', showMenuButton, { once: true, passive: true });
       
       if (menuBtn && menuDropdown) {
         menuBtn.addEventListener('click', function(e) {
