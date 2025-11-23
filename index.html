@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Perfection 86</title>
+  <link rel="icon" type="image/png" href="./headerologpng.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@600;700;900&display=swap" rel="stylesheet">
@@ -171,10 +172,11 @@
     }
     
     .hero-header-overlay .hero-header-logo {
-      margin-left: 16px;
-      height: 40px;
+      margin-left: 96px;
+      margin-top: 8px;
+      height: 80px;
       width: auto;
-      max-width: 150px;
+      max-width: 300px;
       display: block;
       transition: height 0.3s, max-width 0.3s;
       position: relative;
@@ -230,8 +232,8 @@
     }
     
     .logo-placeholder {
-      width: 150px;
-      height: 40px;
+      width: 300px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -264,12 +266,12 @@
     /* Mobile Logo and Menu Button */
     .hero-mobile-logo {
       position: absolute;
-      top: 18px;
+      top: 7.5px;
       left: 18px;
       z-index: 10;
-      height: 36.1px;
+      height: 65px;
       width: auto;
-      max-width: 114px;
+      max-width: 205px;
       display: block;
       filter: brightness(0) invert(1);
       object-fit: contain;
@@ -582,7 +584,7 @@
     .card-badge img {
       width: 45px;
       height: auto;
-      filter: brightness(0);
+      filter: brightness(0) invert(1);
     }
     
     .service-card:hover {
@@ -1508,7 +1510,7 @@
       }
       
       .logo-placeholder {
-        height: 24px;
+        height: 48px;
         width: auto;
         margin: 0 10px 0 0;
         display: inline-block;
@@ -1518,8 +1520,8 @@
       }
       
       .logo-placeholder img {
-        height: 24px;
-        max-height: 24px;
+        height: 48px;
+        max-height: 48px;
         width: auto;
         filter: brightness(0) invert(1);
         transition: filter 0.3s;
@@ -1941,7 +1943,7 @@
     <nav class="hero-header-nav">
       <!-- Replace with actual logo image: <img src="./Images/logo.png" alt="Auto Restoration Logo" class="hero-header-logo" /> -->
       <div class="logo-placeholder">
-        <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-header-logo">
+        <img src="./headerologpng.png" alt="Perfection86 Logo" class="hero-header-logo">
       </div>
       <a href="#home">SĀKUMS</a>
       <a href="#services">PAKALPOJUMI</a>
@@ -1957,7 +1959,7 @@
     
     <!-- Mobile Logo and Menu -->
     <!-- Replace with actual logo: <img src="./Images/logo.png" alt="Auto Restoration Logo" class="hero-mobile-logo" /> -->
-    <img src="./perfection86.webp" alt="Perfection86 Logo" class="hero-mobile-logo">
+    <img src="./headerologpng.png" alt="Perfection86 Logo" class="hero-mobile-logo">
     <button class="hero-mobile-menu-btn" id="hero-mobile-menu-btn" aria-label="Open menu">☰</button>
     <div class="hero-mobile-dropdown" id="hero-mobile-dropdown">
       <a href="#home">Sākums</a>
@@ -2362,8 +2364,10 @@
         heroVideo.setAttribute('playsinline', '');
         heroVideo.setAttribute('webkit-playsinline', '');
         heroVideo.setAttribute('x-webkit-airplay', 'allow');
+        heroVideo.setAttribute('loop', '');
         heroVideo.muted = true;
         heroVideo.autoplay = true;
+        heroVideo.loop = true;
         
         // Function to attempt video play
         function attemptPlay() {
@@ -2394,6 +2398,14 @@
         document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
         document.addEventListener('click', playOnInteraction, { once: true });
         window.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
+        
+        // Ensure video loops endlessly - restart if it ends (fallback)
+        heroVideo.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play().catch(error => {
+            console.log('Video restart prevented');
+          });
+        });
       }
       
       setTimeout(function() {
@@ -2478,35 +2490,12 @@
       // Fade-in animation for service cards on scroll
       const serviceCards = document.querySelectorAll('.service-card');
       
-      // Check if mobile device
-      const isMobile = window.innerWidth <= 900;
-      
-      if (isMobile) {
-        // On mobile, show cards immediately on page load
-        serviceCards.forEach(card => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-      } else {
-        // On desktop, use scroll animation
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-        
-        serviceCards.forEach(card => {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(30px)';
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          observer.observe(card);
-        });
-      }
+      // Show cards immediately on page load for both mobile and desktop
+      serviceCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
       
       // Helper function to initialize slider when visible
       function initSliderOnVisible(sliderSelector) {
@@ -2646,6 +2635,18 @@
   </button>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
