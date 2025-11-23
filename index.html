@@ -1578,8 +1578,8 @@
       }
       
       .hero {
-        min-height: 70vh;
-        height: 70vh;
+        min-height: 50vh;
+        height: 50vh;
         background-attachment: scroll;
       }
       
@@ -1591,15 +1591,22 @@
       
       .hero-headline {
         font-size: 2.09rem;
+        margin-bottom: 0.5rem;
       }
       
       .hero-headline img {
-        max-height: 289px;
+        max-height: 220px;
         width: auto;
       }
       
       .hero-subheadline {
         font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+        margin-top: 0.3rem;
+      }
+      
+      .hero-buttons {
+        margin-top: 0;
       }
       
       .hero-buttons {
@@ -1632,6 +1639,11 @@
       .hero-btn:active {
         transform: scale(0.97);
         box-shadow: 0 2px 12px rgba(231,76,60,0.18);
+      }
+      
+      .services-section {
+        margin-top: -120px;
+        padding-top: 20px;
       }
       
       .services-grid {
@@ -1772,7 +1784,8 @@
       
       .services-section {
         padding: 0 0 35px 0;
-        margin-top: -60px;
+        margin-top: -100px;
+        padding-top: 20px;
       }
       
       .services-offered-section {
@@ -1808,13 +1821,28 @@
     }
     
     @media (max-width: 480px) {
+      .hero {
+        min-height: 45vh;
+        height: 45vh;
+      }
+      
       .hero-headline img {
-        max-height: 228px;
+        max-height: 180px;
       }
       
       .hero-subheadline {
         font-size: 0.855rem;
         padding: 0 15px;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-buttons {
+        margin-top: 0.5rem;
+      }
+      
+      .services-section {
+        margin-top: -100px;
+        padding-top: 15px;
       }
       
       .section-title {
@@ -2632,6 +2660,7 @@
   </button>
 </body>
 </html>
+
 
 
 
