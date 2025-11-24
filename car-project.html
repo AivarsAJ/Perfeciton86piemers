@@ -81,7 +81,7 @@
     }
     
     * {
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), auto;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), auto !important;
     }
     
     a, button, .order-btn, .back-btn, .color-swatch, .detail-image-container, .hero-mobile-menu-btn, .hero-header-nav a {
@@ -238,7 +238,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      cursor: pointer;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), pointer !important;
       transition: background 0.2s, opacity 0.3s;
       opacity: 1;
       pointer-events: all;
@@ -461,11 +461,20 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      cursor: pointer;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), pointer !important;
       transition: all 0.3s ease;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .order-btn .play-icon {
+      font-size: 1rem;
+      margin-right: 0;
     }
     
     .order-btn::before {
@@ -530,7 +539,7 @@
       overflow: hidden;
       position: relative;
       background: #0a0a0a;
-      cursor: pointer;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), pointer !important;
       transition: all 0.3s ease;
       z-index: 2;
     }
@@ -642,6 +651,142 @@
     
     .description-image:hover img {
       transform: scale(1.05);
+    }
+    
+    .description-image img,
+    .main-image,
+    .detail-image {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), pointer !important;
+    }
+    
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 70%;
+      max-height: 80%;
+      margin: auto;
+      animation: zoomIn 0.3s ease;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 70%;
+      max-height: 80%;
+      margin: auto;
+      animation: zoomIn 0.3s ease;
+    }
+    
+    .lightbox-content::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 40px);
+      height: calc(100% + 40px);
+      background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.2) 40%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
+      filter: blur(20px);
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), auto;
+    }
+    
+    @media (max-width: 768px) {
+      .lightbox-content {
+        max-width: 85%;
+        max-height: 75%;
+      }
+      
+      .lightbox-image {
+        max-height: 75vh;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 70%;
+      }
+      
+      .lightbox-image {
+        max-height: 70vh;
+      }
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" fill="%23FF0000"/></svg>'), pointer !important;
+      z-index: 10001;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 0, 0, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      border: 2px solid var(--lightning-red);
+    }
+    
+    .lightbox-close:hover {
+      background: var(--lightning-red);
+      transform: rotate(90deg);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
     
     /* Responsive Design */
@@ -1070,23 +1215,18 @@
        right: auto;
        margin-right: auto;
        margin-left: 0;
+       filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6)) drop-shadow(0 0 30px rgba(255, 0, 0, 0.4)) drop-shadow(0 0 45px rgba(255, 0, 0, 0.3));
      }
      
      @media (max-width: 768px) {
        .aivis-logo {
-         max-width: 1056px;
-         max-height: 845px;
-         width: 1056px;
-         left: -40px;
+         display: none !important;
        }
      }
      
      @media (max-width: 480px) {
        .aivis-logo {
-         max-width: 845px;
-         max-height: 704px;
-         width: 845px;
-         left: -30px;
+         display: none !important;
        }
      }
      
@@ -1108,7 +1248,7 @@
      .youtube-videos-container {
        max-width: 1400px;
        margin: 0 auto;
-       transform: translateX(15px);
+       transform: translateX(0);
      }
      
      .youtube-videos-title {
@@ -1156,14 +1296,17 @@
      
      .youtube-videos-grid {
        display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
        gap: 30px;
-       margin: 0;
+       margin: 0 auto;
+       justify-items: center;
+       max-width: 900px;
      }
      
      .youtube-video-wrapper {
        position: relative;
        width: 100%;
+       max-width: 420px;
        padding-bottom: 56.25%; /* 16:9 aspect ratio */
        height: 0;
        overflow: hidden;
@@ -1467,7 +1610,7 @@
     <div class="car-info-panel">
       <div class="car-info-content">
         <p class="car-description" id="carDescription">
-          Pilnīga virsbūves pārkrāsošana un atjaunošana ietvēra darbu pilnā spektrā – sākām ar rūpīgu virsbūves sagatavošanu, noņemot veco krāsu, izlīdzinot visas virsmas un novēršot visus defektus. Pēc tam tika veikta profesionāla gruntēšana un augstas kvalitātes krāsošana ar mūsdienīgākajiem materiāliem, nodrošinot vizuāli nevainojamu un ilgstoši izturīgu rezultātu visā virsbūvē.
+          Ievadam R34 no Japānas un pilnībā atjaunojam tā vizuālo izskatu. Uzstādam GTR kitu, kas ietver priekšējo un aizmugurējo bamperi, sānu sliekšņus, spoilera elementus un sporta diskus, saglabājot autentisko japāņu sporta stila dizainu. Automobili pārkrāsojam, atjaunojot oriģinālo krāsu dzīvīgumu vai pielāgojot jaunu tonāli spēcīgu niansi. Visi vizuālie elementi tiek precīzi pielāgoti, lai auto izskatītos kā leģendārā versija, akcentējot agresīvo un elegantā sporta stila sajūtu
         </p>
         
       <h2 class="section-header">Projekta parametri</h2>
@@ -1475,7 +1618,7 @@
           <div class="stat-item">
             <div class="stat-label">Krāsošanas kvalitāte</div>
             <div class="stat-bar-container">
-              <div class="stat-bar" style="width: 95%;"></div>
+              <div class="stat-bar" style="width: 100%;"></div>
             </div>
           </div>
           <div class="stat-item">
@@ -1487,19 +1630,20 @@
           <div class="stat-item">
             <div class="stat-label">Detalizētība</div>
             <div class="stat-bar-container">
-              <div class="stat-bar" style="width: 90%;"></div>
+              <div class="stat-bar" style="width: 100%;"></div>
             </div>
           </div>
           <div class="stat-item">
             <div class="stat-label">Vispārējā kvalitāte</div>
             <div class="stat-bar-container">
-              <div class="stat-bar" style="width: 98%;"></div>
+              <div class="stat-bar" style="width: 100%;"></div>
             </div>
           </div>
         </div>
         
         <button class="order-btn" onclick="window.location.href='./under-construction.html'">
           Pilnā pārbuve
+          <i class="fas fa-play play-icon"></i>
         </button>
       </div>
       
@@ -1533,7 +1677,7 @@
         </div>
       </div>
       
-      <div class="description-content reverse">
+      <div class="description-content">
         <div class="description-text">
           <h3>Auto sagatavošana pilnai krāsošanai</h3>
           <p>Pēc bodykita uzstādīšanas mēs sagatavojām visu automašīnu krāsošanai. Tika veikta pilna virsbūves noslīpēšana, izlīdzināta pāreja starp jaunajām detaļām un sākotnējo virsmu, kā arī pārbaudītas visas līnijas un spraugas. Vajadzības gadījumā tika veikta papildus špaktelēšana un virsmas korekcijas, lai nodrošinātu maksimāli gludu un precīzu pamatu. Kad visas detaļas bija sagatavotas, auto tika attaukots, nogruntēts un salikts tā, lai virsbūve būtu gatava krāsošanas procesam un iegūtu perfektu, kvalitatīvu un vienmērīgu pārklājumu.</p>
@@ -1645,6 +1789,14 @@
 
   <!-- Aivis Logo -->
   <img src="./aivis.png" alt="Aivis Logo" class="aivis-logo">
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <div class="lightbox-content">
+      <img src="" alt="Enlarged view" class="lightbox-image" id="lightboxImage">
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -1770,8 +1922,8 @@
     const carData = {
       'r34': {
         name: 'NISSAN R34 SKYLINE',
-        description: 'Pilnīga virsbūves pārkrāsošana un atjaunošana ietvēra darbu pilnā spektrā – sākām ar rūpīgu virsbūves sagatavošanu, noņemot veco krāsu, izlīdzinot visas virsmas un novēršot visus defektus. Pēc tam tika veikta profesionāla gruntēšana un augstas kvalitātes krāsošana ar mūsdienīgākajiem materiāliem, nodrošinot vizuāli nevainojamu un ilgstoši izturīgu rezultātu visā virsbūvē.',
-        images: ['./1.jpg', './2.jpg', './3.jpg', './4.jpg'],
+        description: 'Ievadam R34 no Japānas un pilnībā atjaunojam tā vizuālo izskatu. Uzstādam GTR kitu, kas ietver priekšējo un aizmugurējo bamperi, sānu sliekšņus, spoilera elementus un sporta diskus, saglabājot autentisko japāņu sporta stila dizainu. Automobili pārkrāsojam, atjaunojot oriģinālo krāsu dzīvīgumu vai pielāgojot jaunu tonāli spēcīgu niansi. Visi vizuālie elementi tiek precīzi pielāgoti, lai auto izskatītos kā leģendārā versija, akcentējot agresīvo un elegantā sporta stila sajūtu',
+        images: ['./sky.jpg', './sky2.jpg', './sky3.jpg'],
         detailImages: ['./1.jpg', './2.jpg', './3.jpg']
       },
       'e30': {
@@ -1822,6 +1974,58 @@
         detailSectionImages[2].alt = 'Krāsošanas process un apdare';
       }
     }
+    
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    
+    // Function to open lightbox
+    function openLightbox(imageSrc, imageAlt) {
+      if (lightboxImage && lightbox) {
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = imageAlt || 'Enlarged view';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Function to close lightbox
+    function closeLightbox() {
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Close lightbox on close button click
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    // Close lightbox on background click
+    if (lightbox) {
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
+    
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+    
+    // Use event delegation for image clicks (works for dynamically loaded images too)
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('.main-image, .detail-image, .description-image img')) {
+        e.preventDefault();
+        openLightbox(e.target.src, e.target.alt);
+      }
+    });
   </script>
 </body>
 </html>
